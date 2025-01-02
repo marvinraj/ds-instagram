@@ -3,7 +3,7 @@ const db = require('../config/db');
 // logic to handle login authentication
 const getAuth = (req, res) => {
     const { email, password } = req.body;
-    const q = "SELECT email, username FROM users WHERE email = ? AND password = ?";
+    const q = "SELECT email, username, id FROM users WHERE email = ? AND password = ?";
 
     db.query(q, [email, password], (err, data) => {
         if (err) {
