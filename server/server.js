@@ -2,6 +2,7 @@ const express = require('express');
 const postRoutes = require('./routes/postRoutes')
 // const userRoutes = require('./routes/userRoutes')
 const commentRoutes = require('./routes/commentRoutes')
+const authRoutes = require('./routes/authRoutes')
 const connectDB = require('./config/db');
 
 require('dotenv').config(); // loads the env variables
@@ -26,8 +27,9 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api/posts", postRoutes);
-// app.use("/api/users", userRoutes);
 app.use("/api/comments", commentRoutes);
+app.use("/api/auth", authRoutes);
+// app.use("/api/users", userRoutes);
 
 // db connection
 connectDB.connect((err) => {
