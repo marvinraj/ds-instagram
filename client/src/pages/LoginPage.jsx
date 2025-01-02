@@ -18,6 +18,7 @@ function LoginPage() {
                 // store in local storage
                 localStorage.setItem('email', user_details.email);
                 localStorage.setItem('username', username);
+                localStorage.setItem('user_id', user_details.id);
                 console.log(localStorage)
                 navigate("/feed");
             } else {
