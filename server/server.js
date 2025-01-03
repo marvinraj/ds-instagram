@@ -31,6 +31,8 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/auth", authRoutes);
 // app.use("/api/users", userRoutes);
 
+app.use('/uploads', express.static('uploads'));
+
 // db connection
 connectDB.connect((err) => {
     if (err){
