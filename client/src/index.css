@@ -133,3 +133,34 @@ form button:hover:not(:disabled) {
 .create-post-button:hover {
     background-color: #218838;
 }
+
+/* likes */
+.likes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.like-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.like-button:hover {
+    background-color: #0056b3;
+}
+
+.like-button.liked {
+    background-color: #ff4757;
+}
+
+.likes span {
+    font-size: 14px;
+    color: #555;
+}

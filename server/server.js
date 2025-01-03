@@ -3,6 +3,7 @@ const postRoutes = require('./routes/postRoutes')
 // const userRoutes = require('./routes/userRoutes')
 const commentRoutes = require('./routes/commentRoutes')
 const authRoutes = require('./routes/authRoutes')
+const likeRoutes = require('./routes/likeRoutes')
 const connectDB = require('./config/db');
 
 require('dotenv').config(); // loads the env variables
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/posts", likeRoutes);
 // app.use("/api/users", userRoutes);
 
 app.use('/uploads', express.static('uploads'));
