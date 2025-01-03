@@ -9,26 +9,51 @@
     border-radius: 8px;
     padding: 16px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
 }
 
 .post-card h3 {
     margin: 0 0 8px;
     font-size: 18px;
-    font-weight: bold;
 }
 
-.post-card .post-image {
-    width: 50%;
-    height: auto;
+.post-card img {
+    width: 200px;
+    height: 180px;
     border-radius: 8px;
     margin-bottom: 8px;
 }
 
 .post-card p {
-    margin: 0;
+    margin: 0 0 8px;
     color: #555;
 }
+
+.comment-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-button:hover {
+    background-color: #0056b3;
+}
+
+.comments-section {
+    margin-top: 12px;
+    border-top: 1px solid #ddd;
+    padding-top: 8px;
+}
+
+.comment {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
 
 /* upload post modal */
 .modal-overlay {
