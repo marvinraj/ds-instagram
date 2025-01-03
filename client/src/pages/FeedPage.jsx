@@ -20,7 +20,6 @@ const FeedPage = () => {
                 setLoading(false);
             }
         };
-
         fetchPosts();
     }, []);
 
@@ -39,7 +38,7 @@ const FeedPage = () => {
                 {posts.map((post) => (
                     <PostCard key={post.post_id} post={post} />
                 ))}
-        </div>
+            </div>
         </section>
     )
 }

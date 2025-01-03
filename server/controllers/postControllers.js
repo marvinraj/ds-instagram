@@ -18,7 +18,14 @@ const getAllPosts = (req, res) => {
 
     db.query(q, (err, data) => {
         if (err) return res.status(500).send(err);
-        return res.status(200).send(data);
+
+        // Append base URL to the image_path field
+        const updatedData = data.map(post => ({
+            ...post,
+            image_path: `http://localhost:5000/${post.image_path}`
+        }));
+
+        return res.status(200).json(updatedData);
     });
 };
 
@@ -57,7 +64,11 @@ const createPost = (req, res) => {
             console.error('Error creating post:', err);
             return res.status(500).send(err);
         }
-        return res.status(201).json({ message: 'Post created successfully', postId: data.insertId });
+        return res.status(201).json({ 
+            message: 'Post created successfully', 
+            postId: data.insertId,
+            image: `http://localhost:5000/${image}`
+        });
     });
 };
 

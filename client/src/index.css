@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.post-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.post-card .post-image {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.post-card p {
+    margin: 0;
+    color: #555;
+}
