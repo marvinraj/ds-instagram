@@ -1,0 +1,12 @@
+# Use the official MySQL image
+FROM mysql:8.0
+
+# Set environment variables for MySQL
+ENV MYSQL_ROOT_PASSWORD=Marvin@010608
+ENV MYSQL_DATABASE=insta
+
+# Copy the schema file to the container's initialization directory
+COPY schema.sql /docker-entrypoint-initdb.d/
+
+# Expose MySQL port
+EXPOSE 3306

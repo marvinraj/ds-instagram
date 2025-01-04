@@ -1,4 +1,4 @@
-CREATE SCHEMA `insta`;
+CREATE DATABASE IF NOT EXISTS `insta`;
 
 -- USERS
 
@@ -11,6 +11,12 @@ CREATE TABLE `insta`.`users` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
+
+
+INSERT INTO `insta`.`users` (`username`, `email`, `password`) VALUES
+('john_doe', 'john@example.com', 'password123'),
+('jane_doe', 'jane@example.com', 'securepass456'),
+('user123', 'user123@example.com', 'testpass789');
 
 -- POSTS
 

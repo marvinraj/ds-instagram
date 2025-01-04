@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # Backend Service
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    # environment:
+    #   - DB_HOST=localhost
+    #   - DB_USER=root
+    #   - DB_PASSWORD=Marvin@010608
+    #   - DB_NAME=insta
+    depends_on:
+      mysql:
+        condition: service_healthy # Wait for MySQL healthcheck to pass
+
+  # Frontend Service
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+
+  # Database Service
+  mysql:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: Marvin@010608
+      MYSQL_DATABASE: insta
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -p Marvin@010608 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
