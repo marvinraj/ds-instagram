@@ -59,7 +59,7 @@ function LoginPage() {
                         <input type="password" onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder='Enter your password' required />
                     </div>
                     <div className='text-center underline cursor-pointer'>
-                        <h3>Forgot password?</h3>
+                        <h3 onClick={() => navigate("/reset")}>Forgot password?</h3>
                     </div>
                     <button type='submit' className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg mt-4">
                         Login
