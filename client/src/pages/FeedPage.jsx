@@ -1,16 +1,14 @@
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // Directly use axios for API calls
-import PostCard from '../components/PostCard'; // Component for displaying a single post
+import axios from 'axios';
+import PostCard from '../components/PostCard';
 import UploadPostModal from '../components/UploadPostModal';
 
 const FeedPage = () => {
-
-    const [posts, setPosts] = useState([]); // State to store posts
-    const [loading, setLoading] = useState(true); // State to manage loading
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Fetch posts from the backend
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -25,36 +23,38 @@ const FeedPage = () => {
         fetchPosts();
     }, []);
 
-    if (loading) {
-        return <p>Loading posts...</p>;
-    }
-    if (posts.length === 0) {
-        return <p>No posts to display.</p>;
-    }
-
     const handlePostAdded = async () => {
         try {
             const response = await axios.get('http://localhost:5000/api/posts');
-            setPosts(response.data); // Replace the posts state with the updated list
+            setPosts(response.data);
         } catch (err) {
             console.error('Error fetching posts after new post:', err);
         }
     };
 
     return (
-        <section>
-            <Navbar/>
-            <div className="feed-page">
-                <h1>Feed</h1>
-                <button className="create-post-button" onClick={() => setIsModalOpen(true)}>
-                    Create Post
-                </button>
+        <section className="bg-gray-100 min-h-screen">
+            <Navbar />
+            <div className="container mx-auto px-4 py-6">
+                {/* Create Post Button */}
+                <div className="flex justify-center mb-6">
+                    <button
+                        className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+                        onClick={() => setIsModalOpen(true)}
+                    >
+                        Create Post
+                    </button>
+                </div>
+
+                {/* Modal for Creating a Post */}
                 <UploadPostModal
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
                     onPostAdded={handlePostAdded}
                 />
-                <div className="posts-container">
+
+                {/* Posts */}
+                <div className="flex flex-col items-center space-y-6">
                     {loading ? (
                         <p>Loading posts...</p>
                     ) : posts.length > 0 ? (
@@ -65,7 +65,7 @@ const FeedPage = () => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default FeedPage;
